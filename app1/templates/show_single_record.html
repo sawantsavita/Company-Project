@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Company Information</title>
+    </head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding:2px
+          }
+        
+    </style>
+    <body>
+        <h1>Company Details</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>No of Employees</th>
+                <th>Establishment Date</th>
+                <th>Is Govt. Registered</th>
+            </tr>
+            {% if single_record %}
+            <tr>
+                <td>{{single_record.name}}</td>
+                <td>{{single_record.address}}</td>
+                <td>{{single_record.no_of_employees}}</td>
+                <td>{{single_record.est_date}}</td>
+                <td>{{single_record.is_govt_registered}}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </body>
+</html>

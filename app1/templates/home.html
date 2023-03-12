@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %} 
+
+{% load crispy_forms_tags %} 
+        <h1>Company Information Form</h1>
+        <form action={% url 'home' %} method = 'POST'>
+            {% csrf_token %}
+            {% if single_record %}
+                ID:<input type="text" name="company_id" value = {{single_record.id}} readonly> <br><br>
+            {% endif %}
+                Name: <input type="text" name="company_name" value = {{single_record.name}}><br><br>
+                Address: <input type="text" name="company_address" value = {{single_record.address}} ><br><br>
+                No of employees: <input type="text" name="company_no_of_employees" value = {{single_record.no_of_employees}}><br><br>
+                Establishment Date: <input type="text" name="company_est_date" value = {{single_record.est_date}}><br><br>
+                {% if single_record %}
+                    {% if single_record.is_govt_registered %}
+                    Is Govt. Registered: Yes<input type="radio" name="company_is_govt_registered" value="Yes" checked>
+                        No<input type="radio" name="company_is_govt_registered" value="No"><br><br>
+                    {% else %}
+                    Is Govt. Registered: Yes<input type="radio" name="company_is_govt_registered" value="Yes">
+                        No<input type="radio" name="company_is_govt_registered" value="No" checked ><br><br>
+                        {% endif %}
+                {% else %} 
+                    Is Govt. Registered: Yes<input type="radio" name="company_is_govt_registered" value="Yes">
+                        No<input type="radio" name="company_is_govt_registered" value="No"><br><br>
+                {% endif %}
+                <input type="submit" value = "Submit"><br><br>                
+        </form>    
+
+
+        <a href= "{% url "show_company" %}">
+            <button type="button">Show Active Companies</button>
+        </a>
+        <a href = "{% url "show_inactive_company" %}">
+            <button type="button">Show Inactive companies</button>
+        </a>  <br><br>  
+        <a href = "{% url "logout_user" %}">
+            <button type="button">Logout</button>
+        </a>    
+{% endblock %}
