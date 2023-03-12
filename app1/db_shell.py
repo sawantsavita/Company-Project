@@ -14,4 +14,7 @@ from django.contrib.auth.models import User
 # print(Company.objects.all())
 
 # Company.objects.using("SECOND_DB").create(name="Wipro", address="Pune", no_of_employees=25000, est_date="12/12/2022", is_govt_registered=True)
-print(Company.objects.using("SECOND_DB").all())
+# print(Company.objects.using("SECOND_DB").all())
+
+all_data = Company.objects.all()
+print(all_data)
